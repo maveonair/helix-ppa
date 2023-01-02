@@ -1,0 +1,29 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+override_dh_auto_clean:
+	cargo clean
+
+override_dh_auto_build:
+	cargo build --release
+
+override_dh_auto_install:
+	install -Dm04755 "debian/helix.sh" "debian/helix/usr/bin/hx"
+	install -Dm04755 "target/release/hx" "debian/helix/usr/lib/helix/hx"
+	install -Dm0644 README.md -t "debian/helix/usr/share/doc/helix"
+
+	mkdir -p "debian/helix/var/lib/helix/runtime/grammars"
+	cp -r "runtime/queries" "debian/helix/var/lib/helix/runtime"
+	cp -r "runtime/themes" "debian/helix/var/lib/helix/runtime"
+	find "runtime/grammars" -type f -name '*.so' -exec install -Dm04755 {} -t "debian/helix/var/lib/helix/runtime/grammars" \;
+	install -Dm0644 "runtime/tutor" -t "debian/helix/var/lib/helix/runtime"
+	
+	install -Dm0644 "contrib/completion/hx.bash" "debian/helix/usr/share/bash-completion/completions/helix"
+	install -Dm0644 "contrib/completion/hx.fish" "debian/helix/usr/share/fish/vendor_completions.d/helix.fish"
+	install -Dm0644 "contrib/completion/hx.zsh" "debian/helix/usr/share/zsh/site-functions/_helix"
+
+	install -Dm0644 "contrib/Helix.desktop" "debian/helix/usr/share/applications/Helix.desktop"
+	install -Dm0644 "contrib/helix.png" "debian/helix/usr/share/icons/hicolor/128x128/apps/helix.png"
+

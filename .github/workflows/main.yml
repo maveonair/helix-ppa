@@ -1,0 +1,29 @@
+name: Build and release packages
+
+on:
+ push:
+  tags:
+    - '*'
+
+env:
+  UBUNTU_LTS: 22.04
+  PKG_NAME: helix
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Build
+        run: |
+          set -xe
+          mkdir -p assets
+          ./build.sh -i ubuntu:${{ env.UBUNTU_LTS }}
+          mv -n target/${{ env.PKG_NAME }}_*.deb assets/
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: assets/*.deb
