@@ -23,6 +23,10 @@ build() {
     cp -a "$TARGET/debian" .
     yes | mk-build-deps --install
     dpkg-source --before-build .
+
+    cargo vendor
+    tar cJf debian/vendor.tar.xz vendor
+
     debian/rules build
     debian/rules binary
 }
