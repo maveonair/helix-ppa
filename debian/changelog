@@ -2,13 +2,13 @@ helix (22.12-3) unstable; urgency=medium
 
   * Fix build process by adding vendor.tar.xz
 
- -- Fabian Mettler <fabian@mettler.cc>  Wed, 04 Jan 2022 00:00:00 +0000
+ -- Fabian Mettler <fabian@mettler.cc>  Wed, 04 Jan 2023 00:00:00 +0000
 
 helix (22.12-2) unstable; urgency=medium
 
   * Fix build process
 
- -- Fabian Mettler <fabian@mettler.cc>  Wed, 04 Jan 2022 00:00:00 +0000
+ -- Fabian Mettler <fabian@mettler.cc>  Wed, 04 Jan 2023 00:00:00 +0000
 
 helix (22.12-1) unstable; urgency=medium
 
