@@ -1,3 +1,9 @@
+helix (22.12-4) unstable; urgency=medium
+
+  * Changed build process to always build grammars
+
+ -- Fabian Mettler <fabian@mettler.cc>  Sun, 15 Jan 2023 17:27:27 +0100
+
 helix (22.12-3) unstable; urgency=medium
 
   * Fix build process by adding vendor.tar.xz

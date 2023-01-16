@@ -11,17 +11,21 @@ override_dh_auto_build:
 	mkdir -p .cargo
 	cp debian/cargo.config .cargo/config
 	tar xJf debian/vendor.tar.xz
-	cargo build --release --frozen
+	cargo build --release
+
+	tar xJf debian/grammars.src.tar.xz
+	HELIX_RUNTIME=$(CURDIR)/runtime ./target/release/hx --grammar build
+	rm -rf ./runtime/grammars/sources
 
 override_dh_auto_install:
 	install -Dm04755 "debian/helix.sh" "debian/helix/usr/bin/hx"
 	install -Dm04755 "target/release/hx" "debian/helix/usr/lib/helix/hx"
 	install -Dm0644 README.md -t "debian/helix/usr/share/doc/helix"
 
-	mkdir -p "debian/helix/var/lib/helix/runtime/grammars"
+	mkdir -p "debian/helix/var/lib/helix/runtime"
 	cp -r "runtime/queries" "debian/helix/var/lib/helix/runtime"
 	cp -r "runtime/themes" "debian/helix/var/lib/helix/runtime"
-	find "runtime/grammars" -type f -name '*.so' -exec install -Dm04755 {} -t "debian/helix/var/lib/helix/runtime/grammars" \;
+	cp -r "runtime/grammars" "debian/helix/var/lib/helix/runtime"
 	install -Dm0644 "runtime/tutor" -t "debian/helix/var/lib/helix/runtime"
 	
 	install -Dm0644 "contrib/completion/hx.bash" "debian/helix/usr/share/bash-completion/completions/helix"
