@@ -16,11 +16,6 @@ TARGET_DIRECTORY = os.path.join(os.getcwd(), "target")
 HELIX_SOURCE_CODE_URL = "https://github.com/helix-editor/helix/archive/refs/tags"
 
 
-def prepare_target(target_directory) -> None:
-    rmtree(target_directory)
-    os.mkdir(target_directory)
-
-
 def get_args() -> tuple[str, str, str]:
     args = sys.argv[1:]
 
@@ -37,6 +32,11 @@ Example:
         sys.exit(1)
 
     return args[0], args[1], args[2]
+
+
+def prepare_target(target_directory) -> None:
+    rmtree(target_directory)
+    os.mkdir(target_directory)
 
 
 def get_helix_source_url(helix_version: str) -> str:
@@ -114,6 +114,34 @@ def create_dependencies_archives(
     )
 
 
+def prepare_for_build(
+    source_directory_path: str,
+    helix_version: str,
+) -> str:
+    prepare_target(TARGET_DIRECTORY)
+
+    release_file_path = download_helix_release(
+        target_directory_path=TARGET_DIRECTORY, helix_version=helix_version
+    )
+
+    unarchive_helix_release(
+        target_directory_path=TARGET_DIRECTORY, archive_file_path=release_file_path
+    )
+
+    debian_files_directory = prepare_debian_files(TARGET_DIRECTORY)
+
+    create_dependencies_archives(
+        source_directory_path=source_directory_path,
+        destination_directory_path=debian_files_directory,
+    )
+
+    return release_file_path
+
+
+def move_debian_files(source_directory_path: str, target_directory_path: str) -> None:
+    move(source_directory_path, target_directory_path)
+
+
 def update_changelog(source_directory_path, ubuntu_codename, changelog_version) -> None:
     with chdir(source_directory_path):
         print("-> Create new changelog entry...")
@@ -131,31 +159,6 @@ def update_changelog(source_directory_path, ubuntu_codename, changelog_version) 
         )
 
 
-def prepare_for_build(
-    target_directory: str,
-    source_directory_path: str,
-    helix_version: str,
-) -> str:
-    prepare_target(target_directory)
-
-    release_file_path = download_helix_release(
-        target_directory_path=target_directory, helix_version=helix_version
-    )
-
-    unarchive_helix_release(
-        target_directory_path=target_directory, archive_file_path=release_file_path
-    )
-
-    debian_files_directory = prepare_debian_files(target_directory)
-
-    create_dependencies_archives(
-        source_directory_path=source_directory_path,
-        destination_directory_path=debian_files_directory,
-    )
-
-    return release_file_path
-
-
 def run_debuild(source_directory_path: str) -> None:
     with chdir(source_directory_path):
         print("-> Run debuild...")
@@ -163,19 +166,24 @@ def run_debuild(source_directory_path: str) -> None:
 
 
 def run_build(
-    target_directory: str,
     source_directory_path: str,
     release_file_path: str,
     ubuntu_codename: str,
     changelog_version: str,
 ) -> None:
+    # We remove the extracted source directory because it contains
+    # many compiled files from the prepare-for-build step that we
+    # do not want in the final source archive.
     prepare_target(source_directory_path)
 
     unarchive_helix_release(
-        target_directory_path=target_directory, archive_file_path=release_file_path
+        target_directory_path=TARGET_DIRECTORY, archive_file_path=release_file_path
     )
 
-    move(os.path.join(target_directory, "debian"), source_directory_path)
+    move_debian_files(
+        source_directory_path=os.path.join(TARGET_DIRECTORY, "debian"),
+        target_directory_path=source_directory_path,
+    )
 
     update_changelog(
         source_directory_path=source_directory_path,
@@ -191,13 +199,11 @@ def main():
     source_directory_path = os.path.join(TARGET_DIRECTORY, f"helix-{helix_version}")
 
     release_file_path = prepare_for_build(
-        target_directory=TARGET_DIRECTORY,
         source_directory_path=source_directory_path,
         helix_version=helix_version,
     )
 
     run_build(
-        target_directory=TARGET_DIRECTORY,
         source_directory_path=source_directory_path,
         release_file_path=release_file_path,
         ubuntu_codename=ubuntu_codename,
