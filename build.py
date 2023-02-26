@@ -34,7 +34,7 @@ Example:
     return args[0], args[1], args[2]
 
 
-def prepare_target(target_directory) -> None:
+def prepare_target(target_directory: str) -> None:
     rmtree(target_directory)
     os.mkdir(target_directory)
 
