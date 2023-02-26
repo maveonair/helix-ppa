@@ -27,14 +27,12 @@ def get_args() -> tuple[str, str, str]:
     if len(args) < 3:
         print(
             """
-            Arguments are missing!
+Usage:
+    ./build.py <helix-release> <ubuntu-codename> <changelog-version>
 
-            Usage:
-                ./build.py <helix-release> <ubuntu-codename> <changelog-version>
-
-            Example:
-                ./build.py 22.12 kinetic 22.12-5~ubuntu22.10~ppa1
-            """
+Example:
+    ./build.py 22.12 kinetic 22.12-5~ubuntu22.10~ppa1
+        """
         )
         sys.exit(1)
 
