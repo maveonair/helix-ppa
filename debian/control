@@ -10,7 +10,7 @@ Standards-Version: 4.5.1
 Homepage: https://github.com/helix-editor/helix
 
 Package: helix
-Architecture: amd64
+Architecture: any
 Depends:
  ${misc:Depends},
  ${shlibs:Depends},
