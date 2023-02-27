@@ -83,7 +83,7 @@ def create_cargo_vendor_archive(
 
         tar_file_path = os.path.join(destination_directory_path, "vendor.tar.xz")
         print(f"-> Create {tar_file_path}...")
-        subprocess.check_call(["tar", "-czf", tar_file_path, "vendor/"])
+        subprocess.check_call(["tar", "cJf", tar_file_path, "vendor/"])
 
 
 def crate_grammar_sources_archive(
@@ -96,7 +96,7 @@ def crate_grammar_sources_archive(
         tar_file_path = os.path.join(destination_directory_path, "grammars.src.tar.xz")
         print(f"-> Create {tar_file_path}...")
         subprocess.check_call(
-            ["tar", "-czf", tar_file_path, "runtime/grammars/sources/"]
+            ["tar", "cJf", tar_file_path, "runtime/grammars/sources/"]
         )
 
 
@@ -148,6 +148,7 @@ def update_changelog(source_directory_path, ubuntu_codename, changelog_version) 
         subprocess.check_call(
             [
                 "dch",
+                "--force-bad-version",  # we use this because we use this script for back porting!
                 "--distribution",
                 ubuntu_codename,
                 "--package",
