@@ -35,7 +35,7 @@ $ ./build.py 22.12 kinetic 22.12-5~ubuntu22.10~ppa1
 
 ```sh
 $ cd target/helix-22.12
-$ dput ppa:maveonair/helix-editor helix_22.12-5~ubuntu22.10~ppa1g_source.changes
+$ dput ppa:maveonair/helix-editor helix_22.12-5~ubuntu22.10~ppa1_source.changes
 ```
 
 ## References
