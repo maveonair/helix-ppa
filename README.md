@@ -10,13 +10,13 @@ This repository contains the source which is used to build the Debian package fo
 $ ./build.py
 
 Usage:
-    ./build.py <helix-release> <ubuntu-codename> <changelog-version>
+    ./build.py <ubuntu-codename> <changelog-version>
 
 Example:
-    ./build.py 22.12 kinetic 22.12-5~ubuntu22.10~ppa1
+    ./build.py kinetic 23.03-2~ubuntu22.10~ppa1
 ```
 
-### Example: Creating and publishing a new source package for Helix 22.12 on Ubuntu 22.10
+### Example: Creating and publishing a new source package for Helix 23.03 on Ubuntu 22.10
 
 1. Set `DEBMAIL` and `DEBFULLNAME`:
 
@@ -28,14 +28,14 @@ $ export DEBFULLNAME="Firstname Lastname"
 2. Run build script:
 
 ```sh
-$ ./build.py 22.12 kinetic 22.12-5~ubuntu22.10~ppa1
+$ ./build.py kinetic 23.03-2~ubuntu22.10~ppa1
 ```
 
 3. Publish the source package
 
 ```sh
-$ cd target/helix-22.12
-$ dput ppa:maveonair/helix-editor helix_22.12-5~ubuntu22.10~ppa1_source.changes
+$ cd target
+$ dput ppa:maveonair/helix-editor helix_23.03-2~ubuntu22.10~ppa1_source.changes
 ```
 
 ## References

@@ -10,28 +10,28 @@ from shutil import move, rmtree
 from contextlib import chdir
 from distutils.dir_util import copy_tree
 
-
+HELIX_VERSION = "23.03"
 DEBIAN_DIRECTORY = os.path.join(os.path.dirname(os.path.abspath(__file__)), "debian")
 TARGET_DIRECTORY = os.path.join(os.getcwd(), "target")
 HELIX_SOURCE_CODE_URL = "https://github.com/helix-editor/helix/archive/refs/tags"
 
 
-def get_args() -> tuple[str, str, str]:
+def get_args() -> tuple[str, str]:
     args = sys.argv[1:]
 
-    if len(args) < 3:
+    if len(args) < 2:
         print(
             """
 Usage:
-    ./build.py <helix-release> <ubuntu-codename> <changelog-version>
+    ./build.py <ubuntu-codename> <changelog-version>
 
 Example:
-    ./build.py 22.12 kinetic 22.12-5~ubuntu22.10~ppa1
+    ./build.py kinetic 22.12-5~ubuntu22.10~ppa1
         """
         )
         sys.exit(1)
 
-    return args[0], args[1], args[2]
+    return args[0], args[1]
 
 
 def prepare_target(target_directory: str) -> None:
@@ -115,17 +115,18 @@ def create_dependencies_archives(
 
 
 def prepare_for_build(
-    source_directory_path: str,
-    helix_version: str,
+    source_directory_path: str
 ) -> str:
     prepare_target(TARGET_DIRECTORY)
 
     release_file_path = download_helix_release(
-        target_directory_path=TARGET_DIRECTORY, helix_version=helix_version
+        target_directory_path=TARGET_DIRECTORY,
+        helix_version=HELIX_VERSION,
     )
 
     unarchive_helix_release(
-        target_directory_path=TARGET_DIRECTORY, archive_file_path=release_file_path
+        target_directory_path=TARGET_DIRECTORY,
+        archive_file_path=release_file_path,
     )
 
     debian_files_directory = prepare_debian_files(TARGET_DIRECTORY)
@@ -196,12 +197,11 @@ def run_build(
 
 
 def main():
-    helix_version, ubuntu_codename, changelog_version = get_args()
-    source_directory_path = os.path.join(TARGET_DIRECTORY, f"helix-{helix_version}")
+    ubuntu_codename, changelog_version = get_args()
+    source_directory_path = os.path.join(TARGET_DIRECTORY, f"helix-{HELIX_VERSION}")
 
     release_file_path = prepare_for_build(
         source_directory_path=source_directory_path,
-        helix_version=helix_version,
     )
 
     run_build(
