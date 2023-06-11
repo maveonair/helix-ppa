@@ -11,10 +11,9 @@ override_dh_auto_build:
 	mkdir -p .cargo
 	cp debian/cargo.config .cargo/config.toml
 	tar xJf debian/vendor.tar.xz
-	tar xJf debian/grammars.src.tar.xz
-	cargo build --release
+	cargo build --locked --offline --release
 
-# cleanup grammar sources
+#cleanup grammar sources
 	rm -rf ./runtime/grammars/sources
 
 override_dh_auto_install:

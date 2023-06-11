@@ -3,9 +3,11 @@ Section: editors
 Priority: optional
 Maintainer: Fabian Mettler <fabian@mettler.cc>
 Build-Depends:
- cargo:native,
+ cargo,
  debhelper (>= 12),
- rustc:native,
+ g++,
+ git,
+ rustc,
 Standards-Version: 4.5.1
 Homepage: https://github.com/helix-editor/helix
 
@@ -17,4 +19,4 @@ Depends:
 Provides:
  editor
 Description: A post-modern text editor
- It's a joke. If Neovim is the modern Vim, then Helix is post-modern.
+ It's a joke. If Neovim is the modern Vim, then Helix is post-modern.d
