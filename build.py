@@ -1,5 +1,6 @@
 #!/bin/env python3
 
+import argparse
 import requests
 import os
 import subprocess
@@ -8,30 +9,19 @@ import tarfile
 
 from shutil import move, rmtree
 from contextlib import chdir
-from distutils.dir_util import copy_tree
+from shutil import copytree
 
-HELIX_VERSION = "23.05"
+parser = argparse.ArgumentParser(description="Build Helix for Ubuntu")
+parser.add_argument("helix_version", type=str, help="Helix version to build")
+parser.add_argument("ubuntu_codename", type=str, help="Ubuntu codename to build for")
+parser.add_argument("changelog_version", type=str, help="Changelog version to use")
+parser.add_argument("--skip-build", action="store_true", help="Skip the build step")
+
+args = parser.parse_args()
+
 DEBIAN_DIRECTORY = os.path.join(os.path.dirname(os.path.abspath(__file__)), "debian")
 TARGET_DIRECTORY = os.path.join(os.getcwd(), "target")
-HELIX_SOURCE_CODE_URL = f"https://github.com/helix-editor/helix/releases/download/{HELIX_VERSION}/helix-{HELIX_VERSION}-source.tar.xz"
-
-
-def get_args() -> tuple[str, str]:
-    args = sys.argv[1:]
-
-    if len(args) < 2:
-        print(
-            """
-Usage:
-    ./build.py <ubuntu-codename> <changelog-version>
-
-Example:
-    ./build.py kinetic 22.12-5~ubuntu22.10~ppa1
-        """
-        )
-        sys.exit(1)
-
-    return args[0], args[1]
+HELIX_SOURCE_CODE_URL = f"https://github.com/helix-editor/helix/releases/download/{args.helix_version}/helix-{args.helix_version}-source.tar.xz"
 
 
 def prepare_target(target_directory: str) -> None:
@@ -66,7 +56,7 @@ def prepare_debian_files(target_directory_path: str) -> str:
     debian_files_path = os.path.join(target_directory_path, "debian")
 
     print("-> Copy debian files")
-    copy_tree(DEBIAN_DIRECTORY, debian_files_path)
+    copytree(DEBIAN_DIRECTORY, debian_files_path)
 
     return debian_files_path
 
@@ -92,15 +82,13 @@ def create_dependencies_archives(
     )
 
 
-def prepare_for_build(
-    source_directory_path: str
-) -> str:
+def prepare_for_build(helix_version: str, source_directory_path: str) -> str:
     prepare_target(TARGET_DIRECTORY)
     prepare_target(source_directory_path)
 
     release_file_path = download_helix_release(
         target_directory_path=TARGET_DIRECTORY,
-        helix_version=HELIX_VERSION,
+        helix_version=helix_version,
     )
 
     unarchive_helix_release(
@@ -147,6 +135,7 @@ def run_debuild(source_directory_path: str) -> None:
 
 
 def run_build(
+    skip_build: bool,
     source_directory_path: str,
     release_file_path: str,
     ubuntu_codename: str,
@@ -166,6 +155,9 @@ def run_build(
         target_directory_path=source_directory_path,
     )
 
+    if skip_build:
+        return
+
     update_changelog(
         source_directory_path=source_directory_path,
         ubuntu_codename=ubuntu_codename,
@@ -176,18 +168,21 @@ def run_build(
 
 
 def main():
-    ubuntu_codename, changelog_version = get_args()
-    source_directory_path = os.path.join(TARGET_DIRECTORY, f"helix-{HELIX_VERSION}")
+    source_directory_path = os.path.join(
+        TARGET_DIRECTORY, f"helix-{args.helix_version}"
+    )
 
     release_file_path = prepare_for_build(
+        helix_version=args.helix_version,
         source_directory_path=source_directory_path,
     )
 
     run_build(
+        skip_build=args.skip_build,
         source_directory_path=source_directory_path,
         release_file_path=release_file_path,
-        ubuntu_codename=ubuntu_codename,
-        changelog_version=changelog_version,
+        ubuntu_codename=args.ubuntu_codename,
+        changelog_version=args.changelog_version,
     )
 
 

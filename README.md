@@ -13,7 +13,7 @@ Usage:
     ./build.py <ubuntu-codename> <changelog-version>
 
 Example:
-    ./build.py kinetic 23.03-2~ubuntu22.10~ppa1
+    ./build.py jammy 23.03-2~ubuntu22.04~ppa1
 ```
 
 ### Example: Creating and publishing a new source package for Helix 23.03 on Ubuntu 22.10
