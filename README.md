@@ -28,7 +28,7 @@ $ export DEBFULLNAME="Firstname Lastname"
 2. Run build script:
 
 ```sh
-$ ./build.py kinetic 23.03-2~ubuntu22.10~ppa1
+$ XZ_OPT='-T0' ./build.py kinetic 23.03-2~ubuntu22.10~ppa1
 ```
 
 3. Publish the source package
