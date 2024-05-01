@@ -11,6 +11,7 @@ override_dh_auto_build:
 	mkdir -p .cargo
 	cp debian/cargo.config .cargo/config.toml
 	tar xJf debian/vendor.tar.xz
+        export HELIX_DEFAULT_RUNTIME=/usr/lib/helix/runtime
 	cargo build --locked --offline --release
 
 #cleanup grammar sources
@@ -21,11 +22,11 @@ override_dh_auto_install:
 	install -Dm04755 "target/release/hx" "debian/helix/usr/lib/helix/hx"
 	install -Dm0644 README.md -t "debian/helix/usr/share/doc/helix"
 
-	mkdir -p "debian/helix/var/lib/helix/runtime"
-	cp -r "runtime/queries" "debian/helix/var/lib/helix/runtime"
-	cp -r "runtime/themes" "debian/helix/var/lib/helix/runtime"
-	cp -r "runtime/grammars" "debian/helix/var/lib/helix/runtime"
-	install -Dm0644 "runtime/tutor" -t "debian/helix/var/lib/helix/runtime"
+	mkdir -p "debian/helix/usr/lib/helix/runtime/"
+	cp -r "runtime/queries" "debian/helix/usr/lib/helix/runtime/"
+	cp -r "runtime/themes" "debian/helix/usr/lib/helix/runtime/"
+	cp -r "runtime/grammars" "debian/helix/usr/lib/helix/runtime/"
+	install -Dm0644 "runtime/tutor" -t "debian/helix/usr/lib/helix/runtime/"
 
 	install -Dm0644 "contrib/completion/hx.bash" "debian/helix/usr/share/bash-completion/completions/helix"
 	install -Dm0644 "contrib/completion/hx.fish" "debian/helix/usr/share/fish/vendor_completions.d/helix.fish"
