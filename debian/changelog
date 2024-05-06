@@ -1,3 +1,15 @@
+helix (24.03-2) unstable; urgency=medium
+
+  * Move to /usr/lib/helix
+
+ -- Fabian Mettler <fabian@mettler.cc>  Mon, 06 May 2024 13:09:00 +0100
+
+helix (24.03-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Fabian Mettler <fabian@mettler.cc>  Mon, 06 May 2024 12:58:00 +0100
+
 helix (23.05-8) unstable; urgency=medium
 
   * Remove grammar sources after build
