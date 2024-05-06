@@ -11,7 +11,7 @@ override_dh_auto_build:
 	mkdir -p .cargo
 	cp debian/cargo.config .cargo/config.toml
 	tar xJf debian/vendor.tar.xz
-        export HELIX_DEFAULT_RUNTIME=/usr/lib/helix/runtime
+	export HELIX_DEFAULT_RUNTIME=/usr/lib/helix/runtime
 	cargo build --locked --offline --release
 
 #cleanup grammar sources
