@@ -1,3 +1,9 @@
+helix (24.03-3) unstable; urgency=medium
+
+  * Fix completion script paths and names
+
+ -- Fabian Mettler <dev@maveonair.com>  Thu, 20 Jun 2024 20:48:28 +0200
+
 helix (24.03-2) unstable; urgency=medium
 
   * Move to /usr/lib/helix
