@@ -1,3 +1,10 @@
+helix (24.03-4) unstable; urgency=medium
+
+  * Bump version number due to Launchpad outages issues which not accepted the
+    former build
+
+ -- Fabian Mettler <dev@maveonair.com>  Fri, 21 Jun 2024 10:17:11 +0200
+
 helix (24.03-3) unstable; urgency=medium
 
   * Fix completion script paths and names
