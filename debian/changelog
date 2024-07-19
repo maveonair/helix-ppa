@@ -1,3 +1,9 @@
+helix (24.07-2) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Fabian Mettler <dev@maveonair.com>  Mon, 19 Jul 2024 09:33:00 +0100
+
 helix (24.03-4) unstable; urgency=medium
 
   * Bump version number due to Launchpad outages issues which not accepted the
