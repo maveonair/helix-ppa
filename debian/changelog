@@ -1,3 +1,15 @@
+helix (25.01-2) unstable; urgency=medium
+
+  * Use --profile opt instead of --release to create an optimized binary
+
+ -- Fabian Mettler <dev@maveonair.com>  Sat, 18 Jan 2025 16:36:00 +0100
+
+helix (25.01-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Fabian Mettler <dev@maveonair.com>  Sat, 04 Jan 2025 13:59:53 +0100
+
 helix (24.07-1) unstable; urgency=medium
 
   * New upstream release
