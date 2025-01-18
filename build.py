@@ -1,16 +1,15 @@
 #!/bin/env python3
 
-import requests
 import os
 import subprocess
 import sys
 import tarfile
-
-from shutil import move, rmtree
 from contextlib import chdir
-from shutil import copytree
+from shutil import copytree, move, rmtree
 
-HELIX_VERSION = "24.07"
+import requests
+
+HELIX_VERSION = "25.01"
 DEBIAN_DIRECTORY = os.path.join(os.path.dirname(os.path.abspath(__file__)), "debian")
 TARGET_DIRECTORY = os.path.join(os.getcwd(), "target")
 HELIX_SOURCE_CODE_URL = f"https://github.com/helix-editor/helix/releases/download/{HELIX_VERSION}/helix-{HELIX_VERSION}-source.tar.xz"
@@ -92,9 +91,7 @@ def create_dependencies_archives(
     )
 
 
-def prepare_for_build(
-    source_directory_path: str
-) -> str:
+def prepare_for_build(source_directory_path: str) -> str:
     prepare_target(TARGET_DIRECTORY)
     prepare_target(source_directory_path)
 
