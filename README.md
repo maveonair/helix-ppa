@@ -1,3 +1,5 @@
+# Helix 25.01 build fails on Ubuntu 24.04 LTS and older due to Rust Compiler version requirement, see [Issue 14](https://github.com/maveonair/helix-ppa/issues/14)
+
 # helix-ppa
 
 This repository contains the source which is used to build the Ubuntu package for [Helix](https://github.com/helix-editor/helix) and publish it to my personal PPA: [ppa:maveonair/helix-editor](https://launchpad.net/~maveonair/+archive/ubuntu/helix-editor)
