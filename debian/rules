@@ -19,7 +19,7 @@ override_dh_auto_build:
 
 override_dh_auto_install:
 	install -Dm04755 "debian/helix.sh" "debian/helix/usr/bin/hx"
-	install -Dm04755 "target/release/hx" "debian/helix/usr/lib/helix/hx"
+	install -Dm04755 "target/opt/hx" "debian/helix/usr/lib/helix/hx"
 	install -Dm0644 README.md -t "debian/helix/usr/share/doc/helix"
 
 	mkdir -p "debian/helix/usr/lib/helix/runtime/"
