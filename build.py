@@ -9,7 +9,7 @@ from shutil import copytree, move, rmtree
 
 import requests
 
-HELIX_VERSION = "25.01"
+HELIX_VERSION = "25.01.1"
 DEBIAN_DIRECTORY = os.path.join(os.path.dirname(os.path.abspath(__file__)), "debian")
 TARGET_DIRECTORY = os.path.join(os.getcwd(), "target")
 HELIX_SOURCE_CODE_URL = f"https://github.com/helix-editor/helix/releases/download/{HELIX_VERSION}/helix-{HELIX_VERSION}-source.tar.xz"
