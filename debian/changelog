@@ -1,132 +1,138 @@
+helix (25.01.1-4) unstable; urgency=medium
+
+  * New upstream release: 25.01.1
+
+  -- Fabian Mettler <dev@maveonair.com>  Mon, 20 Jan 2025 22:31:24 +0100
+
 helix (25.01-3) unstable; urgency=medium
 
-- Fix: copy binary now from target/opt
+  * Fix: copy binary now from target/opt
 
--- Fabian Mettler <dev@maveonair.com> Sat, 18 Jan 2025 16:49:00 +0100
+  -- Fabian Mettler <dev@maveonair.com> Sat, 18 Jan 2025 16:49:00 +0100
 
 helix (25.01-2) unstable; urgency=medium
 
-- Use --profile opt instead of --release to create an optimized binary
+  * Use --profile opt instead of --release to create an optimized binary
 
--- Fabian Mettler <dev@maveonair.com> Sat, 18 Jan 2025 16:36:00 +0100
+  -- Fabian Mettler <dev@maveonair.com> Sat, 18 Jan 2025 16:36:00 +0100
 
 helix (25.01-1) unstable; urgency=medium
 
-- New upstream release
+  * New upstream release
 
--- Fabian Mettler <dev@maveonair.com> Sat, 04 Jan 2025 13:59:53 +0100
+  -- Fabian Mettler <dev@maveonair.com> Sat, 04 Jan 2025 13:59:53 +0100
 
 helix (24.07-1) unstable; urgency=medium
 
-- New upstream release
+  * New upstream release
 
--- Fabian Mettler <dev@maveonair.com> Mon, 19 Jul 2024 09:33:00 +0100
+  -- Fabian Mettler <dev@maveonair.com> Mon, 19 Jul 2024 09:33:00 +0100
 
 helix (24.03-4) unstable; urgency=medium
 
-- Bump version number due to Launchpad outages issues which not accepted the
+  * Bump version number due to Launchpad outages issues which not accepted the
   former build
 
--- Fabian Mettler <dev@maveonair.com> Fri, 21 Jun 2024 10:17:11 +0200
+  -- Fabian Mettler <dev@maveonair.com> Fri, 21 Jun 2024 10:17:11 +0200
 
 helix (24.03-3) unstable; urgency=medium
 
-- Fix completion script paths and names
+  * Fix completion script paths and names
 
--- Fabian Mettler <dev@maveonair.com> Thu, 20 Jun 2024 20:48:28 +0200
+  -- Fabian Mettler <dev@maveonair.com> Thu, 20 Jun 2024 20:48:28 +0200
 
 helix (24.03-2) unstable; urgency=medium
 
-- Move to /usr/lib/helix
+  * Move to /usr/lib/helix
 
--- Fabian Mettler <fabian@mettler.cc> Mon, 06 May 2024 13:09:00 +0100
+  -- Fabian Mettler <fabian@mettler.cc> Mon, 06 May 2024 13:09:00 +0100
 
 helix (24.03-1) unstable; urgency=medium
 
-- New upstream release
+  * New upstream release
 
--- Fabian Mettler <fabian@mettler.cc> Mon, 06 May 2024 12:58:00 +0100
+  -- Fabian Mettler <fabian@mettler.cc> Mon, 06 May 2024 12:58:00 +0100
 
 helix (23.05-8) unstable; urgency=medium
 
-- Remove grammar sources after build
+  * Remove grammar sources after build
 
--- Fabian Mettler <fabian@mettler.cc> Mon, 12 Jun 2023 17:32:00 +0100
+  -- Fabian Mettler <fabian@mettler.cc> Mon, 12 Jun 2023 17:32:00 +0100
 
 helix (23.05-7) unstable; urgency=medium
 
-- Add missing build dependencies
+  * Add missing build dependencies
 
--- Fabian Mettler <fabian@mettler.cc> Mon, 12 Jun 2023 17:15:00 +0100
+  -- Fabian Mettler <fabian@mettler.cc> Mon, 12 Jun 2023 17:15:00 +0100
 
 helix (23.05-6) unstable; urgency=medium
 
-- Try to fix build process for grammars
+  * Try to fix build process for grammars
 
--- Fabian Mettler <fabian@mettler.cc> Mon, 12 Jun 2023 09:55:00 +0100
+  -- Fabian Mettler <fabian@mettler.cc> Mon, 12 Jun 2023 09:55:00 +0100
 
 helix (23.05-5) unstable; urgency=medium
 
-- Try to fix build process for grammars
+  * Try to fix build process for grammars
 
--- Fabian Mettler <fabian@mettler.cc> Sun, 11 Jun 2023 15:58:00 +0100
+  -- Fabian Mettler <fabian@mettler.cc> Sun, 11 Jun 2023 15:58:00 +0100
 
 helix (23.05-4) unstable; urgency=medium
 
-- Try to fix build process for grammars
+  * Try to fix build process for grammars
 
--- Fabian Mettler <fabian@mettler.cc> Sun, 11 Jun 2023 15:48:00 +0100
+  -- Fabian Mettler <fabian@mettler.cc> Sun, 11 Jun 2023 15:48:00 +0100
 
 helix (23.05-3) unstable; urgency=medium
 
-- New upstream release
+  * New upstream release
 
--- Fabian Mettler <fabian@mettler.cc> Sun, 11 Jun 2023 15:29:00 +0100
+  -- Fabian Mettler <fabian@mettler.cc> Sun, 11 Jun 2023 15:29:00 +0100
 
 helix (23.03-3) unstable; urgency=medium
 
-- Fix build process for grammars
+  * Fix build process for grammars
 
--- Fabian Mettler <fabian@mettler.cc> Fri, 31 Mar 2023 22:00:04 +0100
+  -- Fabian Mettler <fabian@mettler.cc> Fri, 31 Mar 2023 22:00:04 +0100
 
 helix (23.03-2) unstable; urgency=medium
 
-- Fix build process by adding new cargo.config for 23.03
+  * Fix build process by adding new cargo.config for 23.03
 
--- Fabian Mettler <fabian@mettler.cc> Fri, 31 Mar 2023 21:15:10 +0100
+  -- Fabian Mettler <fabian@mettler.cc> Fri, 31 Mar 2023 21:15:10 +0100
 
 helix (23.03-1) unstable; urgency=medium
 
-- New upstream release
+  * New upstream release
 
--- Fabian Mettler <fabian@mettler.cc> Fri, 31 Mar 2023 20:22:03 +0100
+  -- Fabian Mettler <fabian@mettler.cc> Fri, 31 Mar 2023 20:22:03 +0100
 
 helix (22.12-5) unstable; urgency=medium
 
-- Changed architecture to any in control
+  * Changed architecture to any in control
 
--- Fabian Mettler <fabian@mettler.cc> Mon, 27 Feb 2023 20:14:36 +0100
+  -- Fabian Mettler <fabian@mettler.cc> Mon, 27 Feb 2023 20:14:36 +0100
 
 helix (22.12-4) unstable; urgency=medium
 
-- Changed build process to always build grammars
+  * Changed build process to always build grammars
 
--- Fabian Mettler <fabian@mettler.cc> Sun, 15 Jan 2023 17:27:27 +0100
+  -- Fabian Mettler <fabian@mettler.cc> Sun, 15 Jan 2023 17:27:27 +0100
 
 helix (22.12-3) unstable; urgency=medium
 
-- Fix build process by adding vendor.tar.xz
+  * Fix build process by adding vendor.tar.xz
 
--- Fabian Mettler <fabian@mettler.cc> Wed, 04 Jan 2023 00:00:00 +0000
+  -- Fabian Mettler <fabian@mettler.cc> Wed, 04 Jan 2023 00:00:00 +0000
 
 helix (22.12-2) unstable; urgency=medium
 
-- Fix build process
+  * Fix build process
 
--- Fabian Mettler <fabian@mettler.cc> Wed, 04 Jan 2023 00:00:00 +0000
+  -- Fabian Mettler <fabian@mettler.cc> Wed, 04 Jan 2023 00:00:00 +0000
 
 helix (22.12-1) unstable; urgency=medium
 
-- New upstream release
+  * New upstream release
 
--- Fabian Mettler <fabian@mettler.cc> Sat, 31 Dec 2022 00:00:00 +0000
+  -- Fabian Mettler <fabian@mettler.cc> Sat, 31 Dec 2022 00:00:00 +0000
