@@ -1,6 +1,6 @@
 # This project is no longer maintained, please use the Snap installation method: https://docs.helix-editor.com/package-managers.html#snap
 
-# Helix 25.01 build fails on Ubuntu 24.04 LTS and older due to Rust Compiler version requirement, see [Issue 14](https://github.com/maveonair/helix-ppa/issues/14). 
+---
 
 # helix-ppa
 
